@@ -15,22 +15,22 @@ class PluginUI:
     def show(self):
         """UIを表示します。"""
 
-        # パターンA: pyRevit forms (シンプル・推奨)
-        # from pyrevit import forms
-        # forms.alert("メッセージ", title="タイトル")
-
-        # パターンB: TaskDialog (Revit標準ダイアログ)
+        # パターンA: TaskDialog (シンプル・推奨)
         # from Autodesk.Revit.UI import TaskDialog
-        # dialog = TaskDialog("タイトル")
-        # dialog.MainInstruction = "見出し"
-        # dialog.MainContent = "本文"
-        # dialog.Show()
+        # d = TaskDialog("タイトル")
+        # d.MainInstruction = "見出し"
+        # d.MainContent = "本文メッセージ"
+        # d.Show()
 
-        # パターンC: pyRevit WPFWindow (複雑なUI)
-        # from pyrevit.forms import WPFWindow
-        # class MyWindow(WPFWindow):
-        #     def __init__(self):
-        #         super().__init__("layout.xaml")
-        # MyWindow().ShowDialog()
+        # パターンB: TaskDialog でリスト表示
+        # from Autodesk.Revit.UI import TaskDialog
+        # items = self.logic.get_items()
+        # d = TaskDialog("結果")
+        # d.MainContent = "\n".join(str(x) for x in items)
+        # d.Show()
+
+        # パターンC: WinForms (複雑なUI)
+        # from System.Windows.Forms import MessageBox
+        # MessageBox.Show("メッセージ", "タイトル")
 
         pass

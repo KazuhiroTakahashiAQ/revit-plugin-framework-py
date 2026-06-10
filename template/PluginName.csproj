@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>PluginName</AssemblyName>
+    <RootNamespace>PluginName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2024\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2024\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- IronPython: pyRevit不要でPythonスクリプトを実行するために使用 -->
+  <ItemGroup>
+    <PackageReference Include="IronPython" Version="3.4.0" />
+    <PackageReference Include="IronPython.StdLib" Version="3.4.0" />
+  </ItemGroup>
+
+  <!-- Pythonスクリプトをビルド出力にコピー -->
+  <ItemGroup>
+    <Content Include="plugin_logic.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="plugin_ui.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

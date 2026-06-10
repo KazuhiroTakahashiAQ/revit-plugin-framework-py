@@ -1,4 +1,4 @@
-from pyrevit import forms
+from Autodesk.Revit.UI import TaskDialog
 
 
 class PluginUI:
@@ -7,7 +7,7 @@ class PluginUI:
 
     def show(self):
         title, wall_count = self.logic.get_summary()
-        forms.alert(
-            f"ドキュメント: {title}\n壁の数: {wall_count} 個",
-            title="Hello World",
-        )
+        d = TaskDialog("Hello World")
+        d.MainInstruction = "ドキュメント情報"
+        d.MainContent = f"ドキュメント: {title}\n壁の数: {wall_count} 個"
+        d.Show()

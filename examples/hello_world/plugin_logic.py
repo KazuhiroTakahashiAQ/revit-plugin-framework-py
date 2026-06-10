@@ -6,7 +6,7 @@ class PluginLogic:
         self.uidoc = uidoc
         self.doc = uidoc.Document
 
-    def get_summary(self) -> tuple[str, int]:
+    def get_summary(self):
         wall_count = (
             FilteredElementCollector(self.doc)
             .OfClass(Wall)
